@@ -1,16 +1,16 @@
 {
-  "name": "passport-github",
-  "version": "0.1.3",
-  "description": "GitHub authentication strategy for Passport.",
-  "author": { "name": "Jared Hanson", "email": "jaredhanson@gmail.com", "url": "http://www.jaredhanson.net/" },
+  "name": "passport-weibo",
+  "version": "0.0.1",
+  "description": "weibo authentication strategy for Passport.",
+  "author": { "name": "Andy Shang", "email": "andy.amuro@gmail.com", "url": "http://github.com/andyshang" },
   "repository": {
     "type": "git",
-    "url": "http://github.com/jaredhanson/passport-github.git"
+    "url": "http://github.com/andyshang/passport-weibo.git"
   },
   "bugs": {
-    "url": "http://github.com/jaredhanson/passport-github/issues"
+    "url": "http://github.com/andyshang/passport-weibo/issues"
   },
-  "main": "./lib/passport-github",
+  "main": "./lib/passport-weibo",
   "dependencies": {
     "pkginfo": "0.2.x",
     "passport-oauth": "0.1.x"
@@ -26,5 +26,5 @@
     "type": "MIT",
     "url": "http://www.opensource.org/licenses/MIT" 
   } ],
-  "keywords": ["passport", "github", "auth", "authn", "authentication", "identity"]
+  "keywords": ["passport", "weibo", "auth", "authn", "authentication", "identity"]
 }
