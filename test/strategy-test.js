@@ -1,28 +1,28 @@
 var vows = require('vows');
 var assert = require('assert');
 var util = require('util');
-var GitHubStrategy = require('passport-github/strategy');
+var WeiboStrategy = require('passport-weibo/strategy');
 
 
-vows.describe('GitHubStrategy').addBatch({
+vows.describe('WeiboStrategy').addBatch({
   
   'strategy': {
     topic: function() {
-      return new GitHubStrategy({
+      return new WeiboStrategy({
         clientID: 'ABC123',
         clientSecret: 'secret'
       },
       function() {});
     },
     
-    'should be named github': function (strategy) {
-      assert.equal(strategy.name, 'github');
+    'should be named weibo': function (strategy) {
+      assert.equal(strategy.name, 'weibo');
     },
   },
   
   'strategy when loading user profile': {
     topic: function() {
-      var strategy = new GitHubStrategy({
+      var strategy = new WeiboStrategy({
         clientID: 'ABC123',
         clientSecret: 'secret'
       },
@@ -30,7 +30,7 @@ vows.describe('GitHubStrategy').addBatch({
       
       // mock
       strategy._oauth2.get = function(url, accessToken, callback) {
-        var body = '{ "login": "octocat", "id": 1, "name": "monalisa octocat", "email": "octocat@github.com", "html_url": "https://github.com/octocat" }';
+        var body = '{ "login": "octocat", "id": 1, "name": "monalisa octocat", "email": "octocat@weibo.com", "html_url": "https://weibo.com/octocat" }';
         
         callback(null, body, undefined);
       }
@@ -54,13 +54,13 @@ vows.describe('GitHubStrategy').addBatch({
         assert.isNull(err);
       },
       'should load profile' : function(err, profile) {
-        assert.equal(profile.provider, 'github');
+        assert.equal(profile.provider, 'weibo');
         assert.equal(profile.id, '1');
         assert.equal(profile.username, 'octocat');
-        assert.equal(profile.displayName, 'monalisa octocat');
-        assert.equal(profile.profileUrl, 'https://github.com/octocat');
+        assert.equal(profile.nickname, 'monalisa octocat');
+        assert.equal(profile.profileUrl, 'https://weibo.com/octocat');
         assert.lengthOf(profile.emails, 1);
-        assert.equal(profile.emails[0].value, 'octocat@github.com');
+        assert.equal(profile.emails[0].value, 'octocat@weibo.com');
       },
       'should set raw property' : function(err, profile) {
         assert.isString(profile._raw);
@@ -73,7 +73,7 @@ vows.describe('GitHubStrategy').addBatch({
   
   'strategy when loading user profile and encountering an error': {
     topic: function() {
-      var strategy = new GitHubStrategy({
+      var strategy = new WeiboStrategy({
         clientID: 'ABC123',
         clientSecret: 'secret'
       },

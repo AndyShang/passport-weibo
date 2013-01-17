@@ -7,11 +7,11 @@ test:
 
 docs: docs/api.html
 
-docs/api.html: lib/passport-github/*.js
+docs/api.html: lib/passport-weibo/*.js
 	dox \
-		--title Passport-GitHub \
-		--desc "GitHub authentication strategy for Passport" \
-		$(shell find lib/passport-github/* -type f) > $@
+		--title Passport-weibo \
+		--desc "weibo authentication strategy for Passport" \
+		$(shell find lib/passport-weibo/* -type f) > $@
 
 docclean:
 	rm -f docs/*.{1,html}
